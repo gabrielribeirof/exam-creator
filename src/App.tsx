@@ -1,9 +1,11 @@
 import { GlobalStyle } from './styles/GlobalStyle'
 
+import { SignIn } from './pages/SignIn'
+
 export function App() {
   return (
     <>
-      <span>Hi</span>
+      <SignIn />
 
       <GlobalStyle />
     </>
