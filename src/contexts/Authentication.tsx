@@ -1,19 +1,21 @@
-import { type ReactNode, createContext, useState } from 'react'
+import { type ReactNode, createContext, useState, useEffect } from 'react'
 
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { auth, type FirebaseUser } from '../services/firebase'
+import { type FirebaseUser, auth } from '../services/firebase'
+import { type UserCredential, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
 interface User {
   id: string
   name: string
+  email: string | null
   avatar: string
 }
 
 interface AuthenticationContextData {
   user: User | null
-  signInWithGoogle: () => Promise<void>
+  signed: boolean
+  signInWithGoogle: () => Promise<UserCredential>
   signOut: () => Promise<void>
-  isLoading: boolean
+  firstChecked: boolean
 }
 
 interface AuthenticationProviderProps {
@@ -24,11 +26,11 @@ export const AuthenticationContext = createContext({} as AuthenticationContextDa
 
 export function AuthenticationProvider({ children }: AuthenticationProviderProps) {
   const [user, setUser] = useState<User | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [firstChecked, setFirstChecked] = useState(false)
 
   function setUserState(user: FirebaseUser | null) {
     if (user != null) {
-      const { uid, displayName, photoURL } = user
+      const { uid, displayName, email, photoURL } = user
 
       if (!displayName || !photoURL) {
         throw new Error('Missing information from Google account')
@@ -37,38 +39,42 @@ export function AuthenticationProvider({ children }: AuthenticationProviderProps
       setUser({
         id: uid,
         name: displayName,
+        email,
         avatar: photoURL
       })
     }
   }
 
-  async function signInWithGoogle() {
-    setIsLoading(true)
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      user && setUserState(user)
 
+      !firstChecked && setFirstChecked(true)
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  async function signInWithGoogle() {
     const provider = new GoogleAuthProvider()
 
-    try {
-      const result = await signInWithPopup(auth, provider)
-
-      setUserState(result.user)
-    } catch (error) {
-      console.log(error)
-    }
-
-    setIsLoading(false)
+    return await signInWithPopup(auth, provider)
   }
 
   async function signOut() {
-    await auth.signOut()
     setUser(null)
+    await auth.signOut()
   }
 
   return (
     <AuthenticationContext.Provider value={{
       user,
+      signed: !!user,
       signInWithGoogle,
       signOut,
-      isLoading
+      firstChecked
     }}>
       {children}
     </AuthenticationContext.Provider>
