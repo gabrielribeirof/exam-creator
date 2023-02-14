@@ -3,20 +3,20 @@ import { type Icon, IconContext } from 'phosphor-react'
 
 import {
   Container,
-  BaseContent,
-  BaseHeader,
-  BaseHeaderContent,
-  BaseHeaderTitle,
-  BaseHeaderButton,
-  BaseHeaderProgressBar,
-  BaseHeaderProgressBarStep,
-  BaseHeaderProgressBarStepCircle,
-  BaseContentBar,
-  BaseContentBarTitle,
-  BaseContentBarButtons
+  Header,
+  HeaderContent,
+  HeaderTitle,
+  HeaderButton,
+  HeaderProgressBar,
+  HeaderProgressBarStep,
+  HeaderProgressBarStepCircle,
+  Content,
+  ContentBar,
+  ContentBarTitle,
+  ContentBarButtons
 } from './styles'
 
-interface BaseProps {
+interface DashboardBaseProps {
   header: {
     title: string
     icon: Icon
@@ -35,59 +35,59 @@ interface BaseProps {
   children: ReactNode
 }
 
-export function Base({ header, content, children }: BaseProps) {
+export function DashboardBase({ header, content, children }: DashboardBaseProps) {
   return (
     <Container>
-      <BaseHeader color={header.color}>
-        <BaseHeaderContent>
-          <BaseHeaderTitle>
+      <Header color={header.color}>
+        <HeaderContent>
+          <HeaderTitle>
             <IconContext.Provider value={{ size: 32, weight: 'bold' }}>
               <header.icon />
             </IconContext.Provider>
 
             <h1>{header.title}</h1>
-          </BaseHeaderTitle>
+          </HeaderTitle>
 
           {header.buttons && (
-            <BaseHeaderButton>
+            <HeaderButton>
               {header.buttons}
-            </BaseHeaderButton>
+            </HeaderButton>
           )}
 
           {header.progressBar && (
-            <BaseHeaderProgressBar>
+            <HeaderProgressBar>
               {header.progressBar.map((step, index) => (
-                <BaseHeaderProgressBarStep key={`${step.name}-${index}`} active={step.active}>
-                  <BaseHeaderProgressBarStepCircle>
+                <HeaderProgressBarStep key={`${step.name}-${index}`} active={step.active}>
+                  <HeaderProgressBarStepCircle>
                     {index + 1}
-                  </BaseHeaderProgressBarStepCircle>
+                  </HeaderProgressBarStepCircle>
 
                   {step.name}
-                </BaseHeaderProgressBarStep>
+                </HeaderProgressBarStep>
               ))}
-            </BaseHeaderProgressBar>
+            </HeaderProgressBar>
           )}
-        </BaseHeaderContent>
-      </BaseHeader>
+        </HeaderContent>
+      </Header>
 
-      <BaseContent smallerWidth={content?.smallerWidth}>
+      <Content smallerWidth={content?.smallerWidth}>
         {content?.controlBar && (
-          <BaseContentBar>
-            <BaseContentBarTitle>
+          <ContentBar>
+            <ContentBarTitle>
               <h2>{content.controlBar.name}</h2>
               <span>{content.controlBar.description}</span>
-            </BaseContentBarTitle>
+            </ContentBarTitle>
 
             {content.controlBar.buttons && (
-              <BaseContentBarButtons>
+              <ContentBarButtons>
                 {content.controlBar.buttons}
-              </BaseContentBarButtons>
+              </ContentBarButtons>
             )}
-          </BaseContentBar>
+          </ContentBar>
         )}
 
         {children}
-      </BaseContent>
+      </Content>
     </Container>
   )
 }

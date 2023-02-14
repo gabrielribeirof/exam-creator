@@ -4,18 +4,18 @@ const STEP_CIRCLE_SIZE_IN_PX = 30
 
 export const Container = styled.main``
 
-interface BaseHeaderProps {
+interface HeaderProps {
   color?: 'blue'
 }
 
-export const BaseHeader = styled.div<BaseHeaderProps>`
+export const Header = styled.div<HeaderProps>`
   ${props => props.color === 'blue' && css`
     background-color: #003BAE;
     color: #FFF;
   `}
 `
 
-export const BaseHeaderContent = styled.div`
+export const HeaderContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -29,7 +29,7 @@ export const BaseHeaderContent = styled.div`
   }
 `
 
-export const BaseHeaderTitle = styled.div`
+export const HeaderTitle = styled.div`
   display: flex;
   align-items: center;
 
@@ -45,13 +45,13 @@ export const BaseHeaderTitle = styled.div`
   }
 `
 
-export const BaseHeaderButton = styled.div``
+export const HeaderButton = styled.div``
 
-interface BaseHeaderProgressBarStepProps {
+interface HeaderProgressBarStepProps {
   active: boolean
 }
 
-export const BaseHeaderProgressBarStep = styled.div<BaseHeaderProgressBarStepProps>`
+export const HeaderProgressBarStep = styled.div<HeaderProgressBarStepProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,19 +75,19 @@ export const BaseHeaderProgressBarStep = styled.div<BaseHeaderProgressBarStepPro
   }
 `
 
-export const BaseHeaderProgressBar = styled.div`
+export const HeaderProgressBar = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
 
-  ${BaseHeaderProgressBarStep}:last-child {
+  ${HeaderProgressBarStep}:last-child {
     &::after {
       content: none
     }
   }
 `
 
-export const BaseHeaderProgressBarStepCircle = styled.div`
+export const HeaderProgressBarStepCircle = styled.div`
   width: ${STEP_CIRCLE_SIZE_IN_PX}px;
   height: ${STEP_CIRCLE_SIZE_IN_PX}px;
   border: 2px solid #FFF;
@@ -102,11 +102,11 @@ export const BaseHeaderProgressBarStepCircle = styled.div`
   cursor: default;
 `
 
-interface BaseContentProps {
+interface ContentProps {
   smallerWidth?: boolean
 }
 
-export const BaseContent = styled.div<BaseContentProps>`
+export const Content = styled.div<ContentProps>`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -116,14 +116,14 @@ export const BaseContent = styled.div<BaseContentProps>`
   `}
 `
 
-export const BaseContentBar = styled.div`
+export const ContentBar = styled.div`
   padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
   row-gap: 20px;
 `
 
-export const BaseContentBarTitle = styled.div`
+export const ContentBarTitle = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -137,7 +137,7 @@ export const BaseContentBarTitle = styled.div`
   }
 `
 
-export const BaseContentBarButtons = styled.div`
+export const ContentBarButtons = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
