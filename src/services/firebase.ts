@@ -1,9 +1,9 @@
-import firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 
-import { getAuth, type UserInfo } from 'firebase/auth'
+import { getAuth, type User } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
-type FirebaseUser = UserInfo
+type FirebaseUser = User
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBX809afaqupAmI56jgETmBDIlmsinYSRs',
@@ -15,8 +15,8 @@ const firebaseConfig = {
   measurementId: 'G-RYKEFEX01V'
 }
 
-firebase.initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 
-export { firebase, type FirebaseUser }
+export { type FirebaseUser }
 export const auth = getAuth()
 export const database = getFirestore()
