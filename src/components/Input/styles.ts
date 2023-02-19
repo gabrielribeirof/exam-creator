@@ -5,18 +5,8 @@ export const Container = styled.div`
   flex-direction: column;
 
   label {
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-
     > svg {
       margin-right: 5px;
-    }
-
-    .mandatory-indicator {
-      margin-left: 5px;
-      color: #D33131;
     }
   }
 
@@ -28,7 +18,6 @@ export const Container = styled.div`
 
     background-color: #E7E7E7;
     font-family: 'Inter';
-    font-size: 16px;
     outline: none;
     transition: border-color 200ms;
 
