@@ -1,13 +1,18 @@
-import { GlobalStyle } from './styles/GlobalStyle'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
-import { SignIn } from './pages/SignIn'
+import { AuthenticationProvider } from './contexts/Authentication'
+
+import { Routes } from './routes'
+import { GlobalStyle } from './styles/GlobalStyle'
 
 export function App() {
   return (
-    <>
-      <SignIn />
-
+    <AuthenticationProvider>
+    <DndProvider backend={HTML5Backend}>
+      <Routes />
       <GlobalStyle />
-    </>
+    </DndProvider>
+    </AuthenticationProvider>
   )
 }
