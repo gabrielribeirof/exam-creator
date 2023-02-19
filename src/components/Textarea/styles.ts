@@ -22,7 +22,6 @@ export const Container = styled.div`
 
     background-color: #E7E7E7;
     font-family: 'Inter';
-    font-size: 16px;
     outline: none;
     transition: border-color 200ms;
 
