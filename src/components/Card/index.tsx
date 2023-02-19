@@ -1,3 +1,4 @@
+import { type HTMLAttributes } from 'react'
 import { IconContext, type Icon } from 'phosphor-react'
 
 import {
@@ -10,7 +11,7 @@ import {
   CardFooterRight
 } from './styles'
 
-interface CardProps {
+type CardProps = HTMLAttributes<HTMLDivElement> & {
   title: string
   textColor?: string
   backgroundColor?: string
@@ -21,9 +22,9 @@ interface CardProps {
   }
 }
 
-export function Card({ title, textColor, backgroundColor, items, footer }: CardProps) {
+export function Card({ title, textColor, backgroundColor, items, footer, ...props }: CardProps) {
   return (
-    <Container backgroundColor={backgroundColor} textColor={textColor}>
+    <Container backgroundColor={backgroundColor} textColor={textColor} {...props}>
       <CardContent>
         <CardContentTitle>{title}</CardContentTitle>
 
