@@ -15,13 +15,13 @@ export function Header() {
         <Nav>
           <NavItem
             to='/dashboard/exams'
-            active={location.pathname === '/dashboard/exams'}
+            selected={location.pathname === '/dashboard/exams'}
           >
             Exams
           </NavItem>
           <NavItem
             to='/dashboard/classes'
-            active={location.pathname === '/dashboard/classes'}
+            selected={location.pathname === '/dashboard/classes'}
           >
             Classes
           </NavItem>

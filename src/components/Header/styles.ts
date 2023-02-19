@@ -49,7 +49,7 @@ export const Nav = styled.nav`
 `
 
 interface NavItemProps {
-  active?: boolean
+  selected: boolean
 }
 
 export const NavItem = styled(Link)<NavItemProps>`
@@ -83,7 +83,7 @@ export const NavItem = styled(Link)<NavItemProps>`
     opacity: 0;
     transition: opacity 200ms;
 
-    ${(props) => props.active && css`
+    ${(props) => props.selected && css`
       opacity: 1;
     `}
   }
