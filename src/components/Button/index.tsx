@@ -7,20 +7,25 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: 'blue' | 'red' | 'white'
   variant?: 'outlined'
   icon?: Icon
+  isLoading?: boolean
 }
 
-export function Button({ children, icon, ...props }: ButtonProps) {
-  const Icon = icon
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button({ icon, children, ...props }, forwardedRef) {
+    const Icon = icon
 
-  return (
-    <Container {...props}>
-      {Icon && <IconContext.Provider value={{ size: 16, weight: 'bold' }}>
-        <ButtonIcon>
-          <Icon />
-        </ButtonIcon>
-      </IconContext.Provider>}
+    return (
+      <Container {...props} ref={forwardedRef}>
+        {Icon && (
+          <ButtonIcon>
+            <IconContext.Provider value={{ size: 16, weight: 'bold' }}>
+              <Icon />
+            </IconContext.Provider>
+          </ButtonIcon>
+        )}
 
-      {children}
-    </Container>
-  )
-}
+        {children}
+      </Container>
+    )
+  }
+)

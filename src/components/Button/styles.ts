@@ -1,8 +1,16 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
+
+const rotate = keyframes`
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+} 
+`
 
 interface ContainerProps {
   color?: 'blue' | 'red' | 'white'
   variant?: 'outlined'
+  isLoading?: boolean
 }
 
 export const Container = styled.button<ContainerProps>`
@@ -15,6 +23,7 @@ export const Container = styled.button<ContainerProps>`
   font-weight: bold;
   word-break: break-word;
 
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -80,6 +89,31 @@ export const Container = styled.button<ContainerProps>`
     &:hover {
       border: 2px solid #DDDDDD;
       color: #DDDDDD;
+    }
+  `}
+
+  &::after {
+    content: "";
+    position: absolute;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255) rgba(255, 255, 255, 0.25) rgb(255, 255, 255) rgb(255, 255, 255);
+    border-image: initial;
+    width: 12px;
+    height: 12px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border-radius: 50%;
+    animation: 0.75s linear 0s infinite normal none running ${rotate};
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+
+  ${props => props.isLoading && css`
+    color: transparent;
+
+    &::after {
+      opacity: 1;
     }
   `}
 `
