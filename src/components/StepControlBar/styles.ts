@@ -25,5 +25,5 @@ export const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 `
