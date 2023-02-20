@@ -2,19 +2,24 @@ import { Container, Item, ItemCircle, ItemText } from '../QuestionChoices'
 
 interface QuestionChoicesChoicerProps {
   choices: Array<{ id: string, text: string, selected: boolean }>
-  setChoiceSelected: (id: string) => void
+  onChoiceSelect: (id: string) => void
 }
 
-export function QuestionChoicesChoicer({ choices, setChoiceSelected }: QuestionChoicesChoicerProps) {
+export function QuestionChoicesChoicer({ choices, onChoiceSelect }: QuestionChoicesChoicerProps) {
   return (
     <Container>
       {choices.map((choice, index) => (
-        <Item id={choice.id} key={choice.id} selected={choice.selected} data-state={choice.selected}>
-          <ItemCircle onClick={() => setChoiceSelected(choice.id)}>
+        <Item
+          id={choice.id}
+          key={choice.id}
+          selected={choice.selected}
+          onClick={() => onChoiceSelect(choice.id)}
+        >
+          <ItemCircle>
             {String.fromCharCode(index + 65)}
           </ItemCircle>
 
-          <ItemText contentEditable placeholder='Write the choice text...'></ItemText>
+          <ItemText>{choice.text}</ItemText>
         </Item>
       ))}
     </Container>
