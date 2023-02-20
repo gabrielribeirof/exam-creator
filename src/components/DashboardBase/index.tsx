@@ -5,8 +5,9 @@ import {
   Container,
   Header,
   HeaderContent,
+  HeaderLine,
   HeaderTitle,
-  HeaderButton,
+  HeaderButtons,
   HeaderProgressBar,
   HeaderProgressBarStep,
   HeaderProgressBarStepCircle,
@@ -16,13 +17,14 @@ import {
 interface DashboardBaseProps {
   header: {
     title: string
-    icon: Icon
+    icon?: Icon
     color?: 'blue'
     buttons?: ReactNode
     progressBar?: Array<{ name: string, active: boolean }>
   }
   content?: {
     smallerWidth?: boolean
+    biggerWidth?: boolean
   }
   children: ReactNode
 }
@@ -32,19 +34,23 @@ export function DashboardBase({ header, content, children }: DashboardBaseProps)
     <Container>
       <Header color={header.color}>
         <HeaderContent>
-          <HeaderTitle>
-            <IconContext.Provider value={{ size: 32, weight: 'bold' }}>
-              <header.icon />
-            </IconContext.Provider>
+          <HeaderLine>
+            <HeaderTitle>
+              {header.icon && (
+                <IconContext.Provider value={{ size: 32, weight: 'bold' }}>
+                  <header.icon />
+                </IconContext.Provider>
+              )}
 
-            <h1>{header.title}</h1>
-          </HeaderTitle>
+              <h1>{header.title}</h1>
+            </HeaderTitle>
 
-          {header.buttons && (
-            <HeaderButton>
-              {header.buttons}
-            </HeaderButton>
-          )}
+            {header.buttons && (
+              <HeaderButtons>
+                {header.buttons}
+              </HeaderButtons>
+            )}
+          </HeaderLine>
 
           {header.progressBar && (
             <HeaderProgressBar>
@@ -62,7 +68,7 @@ export function DashboardBase({ header, content, children }: DashboardBaseProps)
         </HeaderContent>
       </Header>
 
-      <Content smallerWidth={content?.smallerWidth}>
+      <Content smallerWidth={content?.smallerWidth} biggerWidth={content?.biggerWidth}>
         {children}
       </Content>
     </Container>

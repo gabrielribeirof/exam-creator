@@ -29,6 +29,17 @@ export const HeaderContent = styled.div`
   }
 `
 
+export const HeaderLine = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  @media(max-width: 576px) {
+    flex-direction: column;
+  }
+`
+
 export const HeaderTitle = styled.div`
   display: flex;
   align-items: center;
@@ -40,12 +51,17 @@ export const HeaderTitle = styled.div`
 
   h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 30px;
     word-break: break-word;
   }
 `
 
-export const HeaderButton = styled.div``
+export const HeaderButtons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+`
 
 interface HeaderProgressBarStepProps {
   active: boolean
@@ -104,6 +120,7 @@ export const HeaderProgressBarStepCircle = styled.div`
 
 interface ContentProps {
   smallerWidth?: boolean
+  biggerWidth?: boolean
 }
 
 export const Content = styled.div<ContentProps>`
@@ -113,5 +130,11 @@ export const Content = styled.div<ContentProps>`
 
   ${props => props.smallerWidth && css`
     max-width: 900px;
+  `}
+
+  ${props => props.biggerWidth && css`
+    max-width: unset;
+    margin: unset;
+    padding: unset;
   `}
 `
