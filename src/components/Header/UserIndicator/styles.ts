@@ -1,5 +1,9 @@
 import styled from 'styled-components'
-import { DropdownMenuTrigger, Content, Item } from '@radix-ui/react-dropdown-menu'
+import {
+  DropdownMenuTrigger,
+  Content,
+  Item
+} from '@radix-ui/react-dropdown-menu'
 
 export const USER_INDICATOR_WIDTH_IN_PX = 280
 
@@ -19,7 +23,7 @@ export const Trigger = styled(DropdownMenuTrigger)`
   cursor: pointer;
 
   &[data-state='open'] {
-    background-color: #FFF;
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   }
 `
@@ -31,7 +35,8 @@ export const TriggerUserInfo = styled.div`
   overflow: hidden;
   font-size: 14px;
 
-  .name, .email {
+  .name,
+  .email {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: end;
@@ -55,9 +60,9 @@ export const TriggerUserAvatar = styled.div`
   font-family: 'DM Sans';
   font-size: 28px;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
 
-  background-color: #FF6B00;
+  background-color: #ff6b00;
 `
 
 export const TriggerIndicator = styled.div``
@@ -66,7 +71,7 @@ export const Dropdown = styled(Content)`
   width: ${USER_INDICATOR_WIDTH_IN_PX}px;
   border-radius: 0 0 16px 16px;
 
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   font-size: 14px;
 `

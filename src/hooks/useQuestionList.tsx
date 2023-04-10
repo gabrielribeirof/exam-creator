@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { QuestionListContext } from '../contexts/QuestionListContext'
+import { ListContext } from '../contexts/ListContext'
 
-export function useQuestionList() {
-  const data = useContext(QuestionListContext)
+export function useList() {
+  const data = useContext(ListContext)
 
   if (!data) {
-    throw new Error('useQuestionList must be used within a QuestionListContext')
+    throw new Error('useList must be used within a ListContext')
   }
 
   return data

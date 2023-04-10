@@ -14,12 +14,16 @@ export function Classes() {
       header={{
         icon: UsersFour,
         title: 'Classes',
-        buttons: (<Button color='blue' icon={Plus}>Create class</Button>)
+        buttons: (
+          <Button color="blue" icon={Plus}>
+            Create class
+          </Button>
+        )
       }}
     >
       <Grid>
         <Card
-          title='Natural Sciences and Mathematics'
+          title="Natural Sciences and Mathematics"
           items={[
             {
               icon: UsersFour,
@@ -40,7 +44,7 @@ export function Classes() {
         />
 
         <Card
-          title='Natural Sciences and Mathematics'
+          title="Natural Sciences and Mathematics"
           items={[
             {
               icon: UsersFour,
@@ -60,7 +64,7 @@ export function Classes() {
         />
 
         <Card
-          title='Natural Sciences and Mathematics'
+          title="Natural Sciences and Mathematics"
           items={[
             {
               icon: UsersFour,

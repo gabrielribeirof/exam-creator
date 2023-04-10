@@ -11,7 +11,7 @@ export const ChoicesInputControlBar = styled.div`
     flex: 1;
   }
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
   }
 `

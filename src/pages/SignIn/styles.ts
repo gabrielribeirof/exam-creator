@@ -11,7 +11,7 @@ export const Tab = styled.div`
   height: 100%;
   padding: 40px;
   border-radius: 0 64px 64px 0;
-  background: linear-gradient(316deg, #1E2AD2 6.08%, #FFA6B7 85.93%);
+  background: linear-gradient(316deg, #1e2ad2 6.08%, #ffa6b7 85.93%);
 
   position: absolute;
   left: 0;
@@ -63,7 +63,7 @@ export const TabTitle = styled.h1`
   font-family: 'DM Sans';
   font-weight: bold;
   font-size: 40px;
-  color: #FFFFFF;
+  color: #ffffff;
 
   > .last-word {
     color: #202020;
@@ -144,9 +144,10 @@ export const ContentSeparator = styled.div`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
-  color: #C0C0C0;
+  color: #c0c0c0;
 
-  &::before, &:after {
+  &::before,
+  &:after {
     @media (max-width: 960px) {
       display: none;
     }
@@ -155,7 +156,7 @@ export const ContentSeparator = styled.div`
   &:before {
     content: '';
     width: 50px;
-    border-bottom: solid 1px #C0C0C0;
+    border-bottom: solid 1px #c0c0c0;
     position: absolute;
     left: calc(-50px - 10px);
     top: 50%;
@@ -164,7 +165,7 @@ export const ContentSeparator = styled.div`
   &:after {
     content: '';
     width: 50px;
-    border-bottom: solid 1px #C0C0C0;
+    border-bottom: solid 1px #c0c0c0;
     position: absolute;
     left: calc(100% + 10px);
     top: 50%;

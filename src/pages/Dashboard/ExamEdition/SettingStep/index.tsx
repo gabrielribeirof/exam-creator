@@ -63,13 +63,13 @@ export function SettingStep({ onSubmitted }: SettingStepProps) {
       }}
     >
       <StepControlBar
-        title='Settings'
-        description='* Mandatory fields'
+        title="Settings"
+        description="* Mandatory fields"
         buttons={
           <Button
             icon={ArrowRight}
-            color='blue'
-            type='submit'
+            color="blue"
+            type="submit"
             isLoading={loading}
           >
             Continue
@@ -78,19 +78,29 @@ export function SettingStep({ onSubmitted }: SettingStepProps) {
       />
 
       <Content>
-        <Input name='title' label='Setting Title' mandatory />
+        <Input name="title" label="Setting Title" mandatory />
 
-        <Textarea name='guidelines' label='Guidelines' mandatory />
+        <Textarea name="guidelines" label="Guidelines" mandatory />
 
-        <CheckboxGroup name='classes' />
+        <CheckboxGroup name="classes" />
 
         <SchedulingGroup>
-          <Label text='Scheduling' mandatory />
+          <Label text="Scheduling" mandatory />
 
-          <Input label='Date' labelIcon={Calendar} type='date' name='date' />
+          <Input label="Date" labelIcon={Calendar} type="date" name="date" />
 
-          <Input label='Opening Time' labelIcon={Watch} type='time' name='opening_time' />
-          <Input label='Closing Time' labelIcon={Watch} type='time' name='closing_time' />
+          <Input
+            label="Opening Time"
+            labelIcon={Watch}
+            type="time"
+            name="opening_time"
+          />
+          <Input
+            label="Closing Time"
+            labelIcon={Watch}
+            type="time"
+            name="closing_time"
+          />
         </SchedulingGroup>
       </Content>
     </Form>

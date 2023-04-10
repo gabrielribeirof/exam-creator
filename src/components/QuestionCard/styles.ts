@@ -5,13 +5,14 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   border-radius: 16px;
-  background-color: #FFF;
+  background-color: #fff;
   position: relative;
   cursor: grab;
 
-  &:hover, &focus {
+  &:hover,
+  &focus {
     transition: border-color 200ms;
     border-color: #888888;
 
@@ -26,15 +27,17 @@ export const Container = styled.div<ContainerProps>`
     left: 50%;
   }
 
-  ${props => props.isDragging && css`
-    border: 1px dashed rgba(0, 0, 0, 0.5);
-    background: transparent;
-    cursor: grabbing;
+  ${props =>
+    props.isDragging &&
+    css`
+      border: 1px dashed rgba(0, 0, 0, 0.5);
+      background: transparent;
+      cursor: grabbing;
 
-    > * {
-      opacity: 0;
-    }
-  `}
+      > * {
+        opacity: 0;
+      }
+    `}
 `
 
 interface ContentProps {
@@ -45,9 +48,11 @@ export const Content = styled.div<ContentProps>`
   padding: 18px 20px;
   overflow: hidden;
 
-  ${props => !props.extended && css`
-    max-height: 220px;
-  `}
+  ${props =>
+    !props.extended &&
+    css`
+      max-height: 220px;
+    `}
 `
 
 export const Title = styled.div`
@@ -63,7 +68,7 @@ export const Body = styled.div`
 export const ActionBar = styled.div`
   min-height: 50px;
   padding: 0 20px;
-  border-top: 1px solid #C0C0C0;
+  border-top: 1px solid #c0c0c0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -85,11 +90,11 @@ export const ActionButton = styled.button<ActionButtonProps>`
 
   word-break: keep-all;
   background: none;
-  color: ${props => props.red ? '#DE4534' : '#003BAE'};
+  color: ${props => (props.red ? '#DE4534' : '#003BAE')};
   transition: color 200ms;
   cursor: pointer;
 
   &:hover {
-    color: ${props => props.red ? '#9F1101' : '#01308B'};
+    color: ${props => (props.red ? '#9F1101' : '#01308B')};
   }
 `

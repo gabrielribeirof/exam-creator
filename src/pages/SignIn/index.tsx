@@ -59,32 +59,35 @@ export function SignIn() {
         <TransitionGroup>
           {!transit && (
             <CSSTransition
-              key='original'
+              key="original"
               nodeRef={tabContentRef}
               timeout={400}
-              classNames='fade'
+              classNames="fade"
             >
               <div ref={tabContentRef}>
                 <Logo />
 
                 <TabTitle>
-                  Digital<br />
-                  platform<br />
-                  for creating<br />
+                  Digital
+                  <br />
+                  platform
+                  <br />
+                  for creating
+                  <br />
                   <span className="last-word">exams</span>
                 </TabTitle>
 
-                <img className='preview-image' src={previewImage} />
+                <img className="preview-image" src={previewImage} />
               </div>
             </CSSTransition>
           )}
 
           {transit && (
             <CSSTransition
-              key='loading'
+              key="loading"
               nodeRef={loadingIndicatorRef}
               timeout={400}
-              classNames='fade'
+              classNames="fade"
             >
               <TabLoadingIndicator ref={loadingIndicatorRef}>
                 <Logo />
@@ -106,8 +109,8 @@ export function SignIn() {
       </Content>
 
       <Toast
-        title='Error trying signing up'
-        description='Please, try again'
+        title="Error trying signing up"
+        description="Please, try again"
         open={signInError}
         setOpen={setSignInError}
       />

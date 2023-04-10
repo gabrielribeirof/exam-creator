@@ -18,7 +18,7 @@ interface ToastProps {
 
 export function Toast({ title, description, open, setOpen }: ToastProps) {
   return (
-    <ToastProvider swipeDirection='right'>
+    <ToastProvider swipeDirection="right">
       <ToastRoot open={open} onOpenChange={setOpen}>
         <ToastCloseButton>
           <X size={11} weight="bold" />

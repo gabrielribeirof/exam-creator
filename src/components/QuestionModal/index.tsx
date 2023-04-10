@@ -50,26 +50,33 @@ export function QuestionModal({ trigger, type, ...props }: QuestionModalProps) {
         <Dialog.Overlay />
 
         <Content>
-          <Form onSubmit={handleSubmit} initialData={{
-            choices: [{ id: '123', selected: true }],
-            statement: 'KKKK'
-          }}>
+          <Form
+            onSubmit={handleSubmit}
+            initialData={{
+              choices: [{ id: '123', selected: true }],
+              statement: 'KKKK'
+            }}
+          >
             <Header>
               <HeaderCloseButton>
-                <X size={24} weight='bold' />
+                <X size={24} weight="bold" />
               </HeaderCloseButton>
 
-              <HeaderTitle>Question {type === 'edition' ? 'Edition' : 'Creation'}</HeaderTitle>
+              <HeaderTitle>
+                Question {type === 'edition' ? 'Edition' : 'Creation'}
+              </HeaderTitle>
 
               <HeaderActions>
-                <Button color='blue' type='submit'>Save question</Button>
+                <Button color="blue" type="submit">
+                  Save question
+                </Button>
               </HeaderActions>
             </Header>
 
             <Body>
-              <TextEditor name='statement' label='Statement' mandatory />
+              <TextEditor name="statement" label="Statement" mandatory />
 
-              <QuestionChoicesMarker name='choices' />
+              <QuestionChoicesMarker name="choices" />
             </Body>
           </Form>
         </Content>

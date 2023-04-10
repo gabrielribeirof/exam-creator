@@ -9,10 +9,12 @@ interface HeaderProps {
 }
 
 export const Header = styled.div<HeaderProps>`
-  ${props => props.color === 'blue' && css`
-    background-color: #003BAE;
-    color: #FFF;
-  `}
+  ${props =>
+    props.color === 'blue' &&
+    css`
+      background-color: #003bae;
+      color: #fff;
+    `}
 `
 
 export const HeaderContent = styled.div`
@@ -24,7 +26,7 @@ export const HeaderContent = styled.div`
   flex-wrap: wrap;
   row-gap: 20px;
 
-  @media(max-width: 576px) {
+  @media (max-width: 576px) {
     flex-direction: column;
   }
 `
@@ -35,7 +37,7 @@ export const HeaderLine = styled.div`
   justify-content: space-between;
   gap: 10px;
 
-  @media(max-width: 576px) {
+  @media (max-width: 576px) {
     flex-direction: column;
   }
 `
@@ -74,17 +76,19 @@ export const HeaderProgressBarStep = styled.div<HeaderProgressBarStepProps>`
   flex: 1;
   position: relative;
 
-  ${props => props.active && css`
-    div:first-child {
-      background-color: #FFF;
-      color: #003BAE;
-    }
-  `}
+  ${props =>
+    props.active &&
+    css`
+      div:first-child {
+        background-color: #fff;
+        color: #003bae;
+      }
+    `}
 
   &::after {
     position: absolute;
-    content: "";
-    border-bottom: 2px solid #FFF;
+    content: '';
+    border-bottom: 2px solid #fff;
     width: calc(100% - ${STEP_CIRCLE_SIZE_IN_PX}px);
     left: calc(50% + ${STEP_CIRCLE_SIZE_IN_PX / 2}px);
     top: ${STEP_CIRCLE_SIZE_IN_PX / 2}px;
@@ -98,7 +102,7 @@ export const HeaderProgressBar = styled.div`
 
   ${HeaderProgressBarStep}:last-child {
     &::after {
-      content: none
+      content: none;
     }
   }
 `
@@ -106,7 +110,7 @@ export const HeaderProgressBar = styled.div`
 export const HeaderProgressBarStepCircle = styled.div`
   width: ${STEP_CIRCLE_SIZE_IN_PX}px;
   height: ${STEP_CIRCLE_SIZE_IN_PX}px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   border-radius: 50%;
 
   display: flex;
@@ -128,13 +132,17 @@ export const Content = styled.div<ContentProps>`
   margin: 0 auto;
   padding: 0 20px;
 
-  ${props => props.smallerWidth && css`
-    max-width: 900px;
-  `}
+  ${props =>
+    props.smallerWidth &&
+    css`
+      max-width: 900px;
+    `}
 
-  ${props => props.biggerWidth && css`
-    max-width: unset;
-    margin: unset;
-    padding: unset;
-  `}
+  ${props =>
+    props.biggerWidth &&
+    css`
+      max-width: unset;
+      margin: unset;
+      padding: unset;
+    `}
 `

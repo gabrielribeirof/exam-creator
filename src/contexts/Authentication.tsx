@@ -1,7 +1,11 @@
 import { type ReactNode, createContext, useState, useEffect } from 'react'
 
 import { type FirebaseUser, auth } from '../services/firebase'
-import { type UserCredential, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import {
+  type UserCredential,
+  signInWithPopup,
+  GoogleAuthProvider
+} from 'firebase/auth'
 
 interface User {
   id: string
@@ -22,9 +26,13 @@ interface AuthenticationProviderProps {
   children: ReactNode
 }
 
-export const AuthenticationContext = createContext({} as AuthenticationContextData)
+export const AuthenticationContext = createContext(
+  {} as AuthenticationContextData
+)
 
-export function AuthenticationProvider({ children }: AuthenticationProviderProps) {
+export function AuthenticationProvider({
+  children
+}: AuthenticationProviderProps) {
   const [user, setUser] = useState<User | null>(null)
   const [firstChecked, setFirstChecked] = useState(false)
 
@@ -69,13 +77,15 @@ export function AuthenticationProvider({ children }: AuthenticationProviderProps
   }
 
   return (
-    <AuthenticationContext.Provider value={{
-      user,
-      signed: !!user,
-      signInWithGoogle,
-      signOut,
-      firstChecked
-    }}>
+    <AuthenticationContext.Provider
+      value={{
+        user,
+        signed: !!user,
+        signInWithGoogle,
+        signOut,
+        firstChecked
+      }}
+    >
       {children}
     </AuthenticationContext.Provider>
   )

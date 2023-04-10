@@ -15,16 +15,27 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
   title: string
   textColor?: string
   backgroundColor?: string
-  items: Array<{ icon: Icon, name: string }>
+  items: Array<{ icon: Icon; name: string }>
   footer: {
-    left?: { text: string, icon: Icon }
-    right: { text: string, icon: Icon }
+    left?: { text: string; icon: Icon }
+    right: { text: string; icon: Icon }
   }
 }
 
-export function Card({ title, textColor, backgroundColor, items, footer, ...props }: CardProps) {
+export function Card({
+  title,
+  textColor,
+  backgroundColor,
+  items,
+  footer,
+  ...props
+}: CardProps) {
   return (
-    <Container backgroundColor={backgroundColor} textColor={textColor} {...props}>
+    <Container
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      {...props}
+    >
       <CardContent>
         <CardContentTitle>{title}</CardContentTitle>
 

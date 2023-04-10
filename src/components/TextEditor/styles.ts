@@ -14,12 +14,12 @@ export const Label = styled.label`
 
   .mandatory-indicator {
     margin-left: 5px;
-    color: #D33131;
+    color: #d33131;
   }
 `
 
 export const Editor = styled.div`
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   border-radius: 6px;
   overflow: hidden;
 
@@ -32,7 +32,7 @@ export const Editor = styled.div`
     overflow: auto;
 
     p.is-editor-empty:first-child::before {
-      color: #C0C0C0;
+      color: #c0c0c0;
       content: attr(data-placeholder);
       float: left;
       height: 0;
@@ -43,7 +43,7 @@ export const Editor = styled.div`
 
 export const Bar = styled.div`
   padding: 5px;
-  border-bottom: 1px solid #C0C0C0;
+  border-bottom: 1px solid #c0c0c0;
   display: flex;
   gap: 5px;
 `
@@ -58,29 +58,35 @@ export const BarItem = styled.button<BarItemProps>`
   height: 30px;
   border: none;
   border-radius: 6px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   background-color: transparent;
-  color: #6F6E77;
+  color: #6f6e77;
   cursor: pointer;
 
-  ${props => !props.isActive && css`
-    &:hover {
-      background-color: #E9E9E9;
-    }
-  `}
+  ${props =>
+    !props.isActive &&
+    css`
+      &:hover {
+        background-color: #e9e9e9;
+      }
+    `}
 
-  ${props => props.isActive && css`
-    background-color: #C0C0C0;
-    color: #FFF;
-  `}
+  ${props =>
+    props.isActive &&
+    css`
+      background-color: #c0c0c0;
+      color: #fff;
+    `}
 
-  ${props => props.isDisabled && css`
-    background-color: #a0a0a0;
-    color: #FFF;
-  `}
+  ${props =>
+    props.isDisabled &&
+    css`
+      background-color: #a0a0a0;
+      color: #fff;
+    `}
 `

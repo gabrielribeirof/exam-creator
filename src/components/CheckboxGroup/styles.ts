@@ -23,21 +23,22 @@ export const CheckboxBox = styled(Root)`
   width: 25px;
   height: 25px;
   padding: 0;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   border-radius: 6px;
 
   font-size: 16px;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   outline: none;
   cursor: pointer;
   transition: border-color 200ms;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: #888888;
   }
 
   &[data-state='checked'] {
-    background-color: #003BAE;
+    background-color: #003bae;
   }
 `
 
@@ -45,5 +46,5 @@ export const CheckboxIndicator = styled(Indicator)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #E7E7E7;
+  color: #e7e7e7;
 `

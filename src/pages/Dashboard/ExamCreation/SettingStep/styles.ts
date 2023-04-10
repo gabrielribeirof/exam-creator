@@ -10,7 +10,7 @@ export const CheckboxGroup = styled.div`
 
     .mandatory-indicator {
       margin-left: 5px;
-      color: #D33131;
+      color: #d33131;
     }
   }
 
@@ -30,7 +30,7 @@ export const SchedulingGroup = styled.div`
 
     .mandatory-indicator {
       margin-left: 5px;
-      color: #D33131;
+      color: #d33131;
     }
   }
 

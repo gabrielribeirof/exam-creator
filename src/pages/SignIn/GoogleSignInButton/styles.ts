@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.button`
   min-width: 260px;
   height: 40px;
-  border: 1px solid #A8A8B3;
+  border: 1px solid #a8a8b3;
   border-radius: 16px;
 
   display: flex;
@@ -18,6 +18,6 @@ export const Container = styled.button`
   transition: background-color 200ms;
 
   &:hover {
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
   }
 `

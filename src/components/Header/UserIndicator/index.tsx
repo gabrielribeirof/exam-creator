@@ -24,13 +24,19 @@ export function UserIndicator() {
       <Trigger>
         <TriggerUserInfo>
           <span className="name">Hi, {user?.name}</span>
-          <span className="email" title={user?.email ?? ''}>{user?.email}</span>
+          <span className="email" title={user?.email ?? ''}>
+            {user?.email}
+          </span>
         </TriggerUserInfo>
 
         <TriggerUserAvatar>G</TriggerUserAvatar>
 
         <TriggerIndicator>
-          {open ? <CaretUp size={16} weight="bold" /> : <CaretDown size={16} weight="bold" />}
+          {open ? (
+            <CaretUp size={16} weight="bold" />
+          ) : (
+            <CaretDown size={16} weight="bold" />
+          )}
         </TriggerIndicator>
       </Trigger>
 
@@ -38,9 +44,8 @@ export function UserIndicator() {
         <Dropdown>
           <DropdownItem onClick={signOut}>
             <DropdownItemIcon>
-              <SignOut weight='bold' />
+              <SignOut weight="bold" />
             </DropdownItemIcon>
-
             Sign out
           </DropdownItem>
         </Dropdown>

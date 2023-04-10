@@ -11,7 +11,7 @@ interface ItemProps {
 
 export const Item = styled.li<ItemProps>`
   padding: 10px 14px;
-  border-top: 1px solid #C0C0C0;
+  border-top: 1px solid #c0c0c0;
 
   display: flex;
   align-items: center;
@@ -21,20 +21,22 @@ export const Item = styled.li<ItemProps>`
   cursor: pointer;
 
   &:hover {
-    background-color: #ECECEC;
+    background-color: #ececec;
   }
 
   &:last-child {
-    border-bottom: 1px solid #C0C0C0;
+    border-bottom: 1px solid #c0c0c0;
   }
 
-  ${props => props.selected && css`
-    background-color: #DEE9FF;
+  ${props =>
+    props.selected &&
+    css`
+      background-color: #dee9ff;
 
-    &:hover {
-      background-color: #DEE9FF;
-    }
-  `}
+      &:hover {
+        background-color: #dee9ff;
+      }
+    `}
 `
 
 export const ItemCircle = styled.div`
@@ -42,7 +44,7 @@ export const ItemCircle = styled.div`
   min-width: 40px;
   height: 40px;
   margin-right: 20px;
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
   border-radius: 50%;
 
   display: flex;
@@ -50,7 +52,7 @@ export const ItemCircle = styled.div`
   align-items: center;
 
   font-weight: bold;
-  background-color: #FFF;
+  background-color: #fff;
 `
 
 export const ItemText = styled.div`
@@ -58,7 +60,7 @@ export const ItemText = styled.div`
 
   &:empty::before {
     content: attr(placeholder);
-    color: #C0C0C0;
+    color: #c0c0c0;
   }
 
   &:empty:focus::before {

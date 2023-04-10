@@ -2,9 +2,16 @@ import { useRef, useState } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { CaretDown, CaretUp, DotsSix, Pencil, Trash } from 'phosphor-react'
 
-import { useQuestionList } from '../../hooks/useQuestionList'
+import { useList } from '../../hooks/useQuestionList'
 
-import { Container, Content, Title, Body, ActionBar, ActionButton } from './styles'
+import {
+  Container,
+  Content,
+  Title,
+  Body,
+  ActionBar,
+  ActionButton
+} from './styles'
 
 interface QuestionCardProps {
   id: string
@@ -14,11 +21,16 @@ interface QuestionCardProps {
   onDeleteRequest: (id: string) => void
 }
 
-export function QuestionCard({ id, index, onEditRequest, onDeleteRequest }: QuestionCardProps) {
+export function QuestionCard({
+  id,
+  index,
+  onEditRequest,
+  onDeleteRequest
+}: QuestionCardProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   const [extended, setExtended] = useState(false)
-  const { move } = useQuestionList()
+  const { move } = useList()
 
   const [{ isDragging }, drag] = useDrag({
     type: 'CARD',
@@ -59,26 +71,57 @@ export function QuestionCard({ id, index, onEditRequest, onDeleteRequest }: Ques
 
   return (
     <Container ref={ref} isDragging={isDragging}>
-      <DotsSix className='drag-indicator' weight='bold' />
+      <DotsSix className="drag-indicator" weight="bold" />
 
       <Content extended={extended}>
         <Title>Question {index + 1}</Title>
-        <Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus eu eros sit amet cursus. Nullam aliquet ex sed lorem congue, sed suscipit lectus semper. Quisque semper ullamcorper tortor, sed euismod tellus feugiat in. Sed pretium ante nec leo viverra, sed varius orci laoreet. Praesent dui massa, feugiat in euismod id, suscipit sit amet leo. Aenean at sem nec nisi sollicitudin cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tortor massa, faucibus et purus non, tempor blandit risus. Fusce et leo porta, tristique dolor vulputate, tincidunt justo. Ut ac vestibulum orci. Sed rhoncus, tellus at suscipit accumsan, quam mauris aliquam lectus, vel pellentesque odio nibh et mauris. Pellentesque consequat, magna non eleifend placerat, purus erat fringilla justo, sit amet laoreet libero est ut justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus eu eros sit amet cursus. Nullam aliquet ex sed lorem congue, sed suscipit lectus semper. Quisque semper ullamcorper tortor, sed euismod tellus feugiat in. Sed pretium ante nec leo viverra, sed varius orci laoreet. Praesent dui massa, feugiat in euismod id, suscipit sit amet leo. Aenean at sem nec nisi sollicitudin cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tortor massa, faucibus et purus non, tempor blandit risus. Fusce et leo porta, tristique dolor vulputate, tincidunt justo. Ut ac vestibulum orci. Sed rhoncus, tellus at suscipit accumsan, quam mauris aliquam lectus, vel pellentesque odio nibh et mauris. Pellentesque consequat, magna non eleifend placerat, purus erat fringilla justo, sit amet laoreet libero est ut justo.</Body>
+        <Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus
+          eu eros sit amet cursus. Nullam aliquet ex sed lorem congue, sed
+          suscipit lectus semper. Quisque semper ullamcorper tortor, sed euismod
+          tellus feugiat in. Sed pretium ante nec leo viverra, sed varius orci
+          laoreet. Praesent dui massa, feugiat in euismod id, suscipit sit amet
+          leo. Aenean at sem nec nisi sollicitudin cursus. Pellentesque habitant
+          morbi tristique senectus et netus et malesuada fames ac turpis
+          egestas. Nunc tortor massa, faucibus et purus non, tempor blandit
+          risus. Fusce et leo porta, tristique dolor vulputate, tincidunt justo.
+          Ut ac vestibulum orci. Sed rhoncus, tellus at suscipit accumsan, quam
+          mauris aliquam lectus, vel pellentesque odio nibh et mauris.
+          Pellentesque consequat, magna non eleifend placerat, purus erat
+          fringilla justo, sit amet laoreet libero est ut justo. Lorem ipsum
+          dolor sit amet, consectetur adipiscing elit. Proin dapibus eu eros sit
+          amet cursus. Nullam aliquet ex sed lorem congue, sed suscipit lectus
+          semper. Quisque semper ullamcorper tortor, sed euismod tellus feugiat
+          in. Sed pretium ante nec leo viverra, sed varius orci laoreet.
+          Praesent dui massa, feugiat in euismod id, suscipit sit amet leo.
+          Aenean at sem nec nisi sollicitudin cursus. Pellentesque habitant
+          morbi tristique senectus et netus et malesuada fames ac turpis
+          egestas. Nunc tortor massa, faucibus et purus non, tempor blandit
+          risus. Fusce et leo porta, tristique dolor vulputate, tincidunt justo.
+          Ut ac vestibulum orci. Sed rhoncus, tellus at suscipit accumsan, quam
+          mauris aliquam lectus, vel pellentesque odio nibh et mauris.
+          Pellentesque consequat, magna non eleifend placerat, purus erat
+          fringilla justo, sit amet laoreet libero est ut justo.
+        </Body>
       </Content>
 
       <ActionBar>
-        <ActionButton red type='button' onClick={() => onDeleteRequest(id)}>
-          <Trash weight='fill' />
+        <ActionButton red type="button" onClick={() => onDeleteRequest(id)}>
+          <Trash weight="fill" />
           Delete
         </ActionButton>
 
-        <ActionButton type='button' onClick={() => onEditRequest(id)}>
-          <Pencil weight='fill' />
+        <ActionButton type="button" onClick={() => onEditRequest(id)}>
+          <Pencil weight="fill" />
           Edit
         </ActionButton>
 
-        <ActionButton onClick={() => setExtended(!extended)} type='button'>
-          {extended ? <CaretUp size={14} weight='fill' /> : <CaretDown size={14} weight='fill' />}
+        <ActionButton onClick={() => setExtended(!extended)} type="button">
+          {extended ? (
+            <CaretUp size={14} weight="fill" />
+          ) : (
+            <CaretDown size={14} weight="fill" />
+          )}
           {extended ? 'Shrink the question' : 'Expand the question'}
         </ActionButton>
       </ActionBar>

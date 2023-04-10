@@ -12,7 +12,13 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   mandatory?: boolean
 }
 
-export function Input({ name, label, labelIcon, mandatory, ...props }: InputProps) {
+export function Input({
+  name,
+  label,
+  labelIcon,
+  mandatory,
+  ...props
+}: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const { fieldName, registerField, defaultValue, error } = useField(name)

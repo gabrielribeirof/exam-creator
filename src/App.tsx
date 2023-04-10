@@ -9,10 +9,10 @@ import { GlobalStyle } from './styles/GlobalStyle'
 export function App() {
   return (
     <AuthenticationProvider>
-    <DndProvider backend={HTML5Backend}>
-      <Routes />
-      <GlobalStyle />
-    </DndProvider>
+      <DndProvider backend={HTML5Backend}>
+        <Routes />
+        <GlobalStyle />
+      </DndProvider>
     </AuthenticationProvider>
   )
 }

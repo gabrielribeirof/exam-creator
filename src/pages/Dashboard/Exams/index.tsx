@@ -1,4 +1,12 @@
-import { ArrowRight, CalendarBlank, Exam, ListChecks, Plus, UsersFour, Watch } from 'phosphor-react'
+import {
+  ArrowRight,
+  CalendarBlank,
+  Exam,
+  ListChecks,
+  Plus,
+  UsersFour,
+  Watch
+} from 'phosphor-react'
 
 import { DashboardBase } from '../../../components/DashboardBase'
 
@@ -17,19 +25,20 @@ export function Exams() {
         title: 'Exams',
         buttons: (
           <Button
-            color='blue'
+            color="blue"
             icon={Plus}
             onClick={() => navigate('/dashboard/exams/creation')}
           >
             Create exam
-          </Button>)
+          </Button>
+        )
       }}
     >
       <Grid>
         <Card
-          title='Natural Sciences and Mathematics'
-          backgroundColor='#202020'
-          textColor='#FFFFFF'
+          title="Natural Sciences and Mathematics"
+          backgroundColor="#202020"
+          textColor="#FFFFFF"
           onClick={() => navigate('/dashboard/exams/123/edition')}
           items={[
             {
@@ -58,9 +67,9 @@ export function Exams() {
         />
 
         <Card
-          title='Natural Sciences and Mathematics'
-          backgroundColor='#202020'
-          textColor='#FFFFFF'
+          title="Natural Sciences and Mathematics"
+          backgroundColor="#202020"
+          textColor="#FFFFFF"
           items={[
             {
               icon: UsersFour,
@@ -88,9 +97,9 @@ export function Exams() {
         />
 
         <Card
-          title='Natural Sciences and Mathematics'
-          backgroundColor='#202020'
-          textColor='#FFFFFF'
+          title="Natural Sciences and Mathematics"
+          backgroundColor="#202020"
+          textColor="#FFFFFF"
           items={[
             {
               icon: UsersFour,

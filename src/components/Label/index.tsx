@@ -14,16 +14,16 @@ export function Label({ text, icon, mandatory, error }: LabelProps) {
   return (
     <Container error={!!error}>
       {Icon && (
-        <IconContext.Provider value={{ size: 16 }} >
+        <IconContext.Provider value={{ size: 16 }}>
           <Icon />
         </IconContext.Provider>
       )}
 
       {text}
 
-      {!error && mandatory && <span className='mandatory-indicator'>*</span>}
+      {!error && mandatory && <span className="mandatory-indicator">*</span>}
 
-      {error && <span className='error-text'>- {error}</span>}
+      {error && <span className="error-text">- {error}</span>}
     </Container>
   )
 }

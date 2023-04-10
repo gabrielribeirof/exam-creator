@@ -32,11 +32,16 @@ export function QuestionChoicesMarker({ name }: QuestionChoicesMarkerProps) {
       getValue: (ref: RefObject<HTMLUListElement>) => {
         if (!ref.current) return []
 
-        return Array.from(ref.current.getElementsByTagName('li')).map((value) => ({
-          id: value.getElementsByTagName('div')[0].id,
-          text: value.getElementsByTagName('div')[1].innerText,
-          selected: value.dataset.state === undefined ? false : value.dataset.state === 'true'
-        }))
+        return Array.from(ref.current.getElementsByTagName('li')).map(
+          value => ({
+            id: value.getElementsByTagName('div')[0].id,
+            text: value.getElementsByTagName('div')[1].innerText,
+            selected:
+              value.dataset.state === undefined
+                ? false
+                : value.dataset.state === 'true'
+          })
+        )
       },
       clearValue: () => {
         setChoices(defaultValue)
@@ -70,22 +75,24 @@ export function QuestionChoicesMarker({ name }: QuestionChoicesMarkerProps) {
   }
 
   function setChoiceSelected(id: string) {
-    setChoices(produce(choices, draft => {
-      const newSelectedIndex = draft.findIndex(choice => choice.id === id)
-      const oldSelectedIndex = draft.findIndex(choice => choice.selected)
+    setChoices(
+      produce(choices, draft => {
+        const newSelectedIndex = draft.findIndex(choice => choice.id === id)
+        const oldSelectedIndex = draft.findIndex(choice => choice.selected)
 
-      if (newSelectedIndex !== -1 || oldSelectedIndex !== -1) {
-        draft[newSelectedIndex].selected = true
-        draft[oldSelectedIndex].selected = false
-      }
-    }))
+        if (newSelectedIndex !== -1 || oldSelectedIndex !== -1) {
+          draft[newSelectedIndex].selected = true
+          draft[oldSelectedIndex].selected = false
+        }
+      })
+    )
   }
 
   return (
     <>
       <ChoicesInputControlBar>
         <Label
-          text='Create answer choices and mark the corret one'
+          text="Create answer choices and mark the corret one"
           error={error}
           mandatory
         />
@@ -93,20 +100,20 @@ export function QuestionChoicesMarker({ name }: QuestionChoicesMarkerProps) {
         <ChoicesInputControlBarButtons>
           <Button
             icon={Plus}
-            color='blue'
-            variant='outlined'
+            color="blue"
+            variant="outlined"
             onClick={addChoice}
-            type='button'
+            type="button"
           >
             Add choice
           </Button>
 
           <Button
             icon={Minus}
-            color='blue'
-            variant='outlined'
+            color="blue"
+            variant="outlined"
             onClick={removeChoice}
-            type='button'
+            type="button"
           >
             Remove choice
           </Button>
@@ -115,12 +122,20 @@ export function QuestionChoicesMarker({ name }: QuestionChoicesMarkerProps) {
 
       <Container ref={containerRef}>
         {choices.map((choice, index) => (
-          <Item id={choice.id} key={choice.id} selected={choice.selected} data-state={choice.selected}>
+          <Item
+            id={choice.id}
+            key={choice.id}
+            selected={choice.selected}
+            data-state={choice.selected}
+          >
             <ItemCircle onClick={() => setChoiceSelected(choice.id)}>
               {String.fromCharCode(index + 65)}
             </ItemCircle>
 
-            <ItemText contentEditable placeholder='Write the choice text...'></ItemText>
+            <ItemText
+              contentEditable
+              placeholder="Write the choice text..."
+            ></ItemText>
           </Item>
         ))}
       </Container>

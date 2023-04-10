@@ -1,11 +1,14 @@
 import { Container, Item, ItemCircle, ItemText } from '../QuestionChoices'
 
 interface QuestionChoicesChoicerProps {
-  choices: Array<{ id: string, text: string, selected: boolean }>
+  choices: Array<{ id: string; text: string; selected: boolean }>
   onChoiceSelect: (id: string) => void
 }
 
-export function QuestionChoicesChoicer({ choices, onChoiceSelect }: QuestionChoicesChoicerProps) {
+export function QuestionChoicesChoicer({
+  choices,
+  onChoiceSelect
+}: QuestionChoicesChoicerProps) {
   return (
     <Container>
       {choices.map((choice, index) => (
@@ -15,9 +18,7 @@ export function QuestionChoicesChoicer({ choices, onChoiceSelect }: QuestionChoi
           selected={choice.selected}
           onClick={() => onChoiceSelect(choice.id)}
         >
-          <ItemCircle>
-            {String.fromCharCode(index + 65)}
-          </ItemCircle>
+          <ItemCircle>{String.fromCharCode(index + 65)}</ItemCircle>
 
           <ItemText>{choice.text}</ItemText>
         </Item>

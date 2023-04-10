@@ -1,0 +1,5 @@
+# Libs & Dists
+node_modules
+*.d.ts
+dist
+.next

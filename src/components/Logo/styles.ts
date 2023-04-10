@@ -13,5 +13,5 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  background-color: #003BAE;
+  background-color: #003bae;
 `

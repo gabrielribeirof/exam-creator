@@ -16,17 +16,19 @@ export const Container = styled.label<ContainerProps>`
 
   .mandatory-indicator {
     margin-left: 5px;
-    color: #D33131;
+    color: #d33131;
   }
 
   .error-text {
     margin-left: 5px;
-    color: #D33131;
+    color: #d33131;
     font-weight: 400;
     font-style: italic;
   }
 
-  ${props => props.error && css`
-    color: #D33131;
-  `}
+  ${props =>
+    props.error &&
+    css`
+      color: #d33131;
+    `}
 `

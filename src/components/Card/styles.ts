@@ -10,18 +10,22 @@ export const Container = styled.div<ContainerProps>`
 
   overflow: hidden;
 
-  background-color: #ECECEC;
+  background-color: #ececec;
   color: #202020;
   transition: transform 200ms;
   cursor: pointer;
 
-  ${props => props.textColor && css`
-    color: ${props.textColor};
-  `}
+  ${props =>
+    props.textColor &&
+    css`
+      color: ${props.textColor};
+    `}
 
-  ${props => props.backgroundColor && css`
-    background-color: ${props.backgroundColor};
-  `}
+  ${props =>
+    props.backgroundColor &&
+    css`
+      background-color: ${props.backgroundColor};
+    `}
 
   &:hover {
     transform: scale(1.01);
@@ -49,7 +53,7 @@ export const CardContentItem = styled.div`
   > svg {
     margin-right: 5px;
   }
-  `
+`
 
 export const CardFooter = styled.div`
   height: 50px;

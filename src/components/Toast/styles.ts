@@ -1,5 +1,11 @@
 import styled, { keyframes } from 'styled-components'
-import { Root, Viewport, Title, Description, Close } from '@radix-ui/react-toast'
+import {
+  Root,
+  Viewport,
+  Title,
+  Description,
+  Close
+} from '@radix-ui/react-toast'
 
 export const ToastViewport = styled(Viewport)`
   width: 400px;
@@ -65,7 +71,7 @@ export const ToastCloseButton = styled(Close)`
 export const ToastRoot = styled(Root)`
   padding: 20px;
   border-radius: 16px;
-  background-color: hsla(0,0%,100%,.3);
+  background-color: hsla(0, 0%, 100%, 0.3);
   backdrop-filter: blur(15px) saturate(86%);
   box-shadow: 0 0 30px rgb(0 0 0 / 20%);
 

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { DialogContent, DialogTitle, DialogClose } from '@radix-ui/react-dialog'
 
 export const Content = styled(DialogContent)`
-  background-color: #FFF;
+  background-color: #fff;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -62,7 +62,7 @@ export const ChoicesInputControlBar = styled.div`
     flex: 1;
   }
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
   }
 `

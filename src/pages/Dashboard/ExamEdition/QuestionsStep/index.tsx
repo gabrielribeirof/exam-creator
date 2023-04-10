@@ -3,7 +3,7 @@ import { Plus } from 'phosphor-react'
 import produce from 'immer'
 
 import { QuestionCard } from '../../../../components/QuestionCard'
-import { QuestionListContext } from '../../../../contexts/QuestionListContext'
+import { ListContext } from '../../../../contexts/ListContext'
 import { StepControlBar } from '../../../../components/StepControlBar'
 
 import { Content } from '../../ExamCreation/styles'
@@ -46,39 +46,41 @@ export function QuestionsStep({ onSubmitted }: QuestionsStepProps) {
   }
 
   function move(from: number, to: number) {
-    setQuestions(produce(questions, draft => {
-      const dragged = draft[from]
+    setQuestions(
+      produce(questions, draft => {
+        const dragged = draft[from]
 
-      draft.splice(from, 1)
-      draft.splice(to, 0, dragged)
-    }))
+        draft.splice(from, 1)
+        draft.splice(to, 0, dragged)
+      })
+    )
   }
 
   return (
     <div>
       <StepControlBar
         title={`${questions.length} questions created`}
-        description='Create questions and define their positions'
-        buttons={<>
-          <QuestionModal
-            type='creation'
-            trigger={
-              <Button
-                icon={Plus}
-                color='blue'
-                variant='outlined'
-              >
-                New question
-              </Button>
-            }
-          />
+        description="Create questions and define their positions"
+        buttons={
+          <>
+            <QuestionModal
+              type="creation"
+              trigger={
+                <Button icon={Plus} color="blue" variant="outlined">
+                  New question
+                </Button>
+              }
+            />
 
-          <Button color='blue' type='submit'>Create</Button>
-        </>}
+            <Button color="blue" type="submit">
+              Create
+            </Button>
+          </>
+        }
       />
 
       <Content>
-        <QuestionListContext.Provider value={{ questions, move }}>
+        <ListContext.Provider value={{ items: questions, move }}>
           {questions.map((question, index) => (
             <QuestionCard
               key={question.id}
@@ -88,10 +90,10 @@ export function QuestionsStep({ onSubmitted }: QuestionsStepProps) {
               onDeleteRequest={handleQuestionDeleteRequest}
             />
           ))}
-        </QuestionListContext.Provider>
+        </ListContext.Provider>
 
         <QuestionModal
-          type='edition'
+          type="edition"
           id={questionEditModalId}
           open={isQuestionEditModalOpen}
           onOpenChange={setIsQuestionEditModalOpen}

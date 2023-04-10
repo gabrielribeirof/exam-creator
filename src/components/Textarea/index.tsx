@@ -27,7 +27,7 @@ export function Textarea({ name, label, mandatory, ...props }: TextareaProps) {
       <label htmlFor={name}>
         {label}
 
-        {mandatory && <span className='mandatory-indicator'>*</span>}
+        {mandatory && <span className="mandatory-indicator">*</span>}
 
         {error && `- ${error}`}
       </label>

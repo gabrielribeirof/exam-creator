@@ -14,7 +14,7 @@ export const WithButtonInputContainer = styled.div`
     width: 100%;
   }
 
-  @media(max-width: 576px) {
+  @media (max-width: 576px) {
     flex-direction: column;
     row-gap: 10px;
 
@@ -29,20 +29,20 @@ export const InputButton = styled.button`
   min-width: 50px;
   height: 50px;
   margin-left: 10px;
-  border: 1px solid #01308B;
+  border: 1px solid #01308b;
   border-radius: 6px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: #003BAE;
+  background-color: #003bae;
   color: #fff;
   cursor: pointer;
   transition: background-color 200ms;
 
   &:hover {
-    background-color: #01308B;
+    background-color: #01308b;
   }
 `
 
@@ -53,13 +53,13 @@ export const MemberList = styled.ul`
 
 export const MemberListItem = styled.li`
   padding: 10px 20px;
-  border-top: 1px solid #C0C0C0;
+  border-top: 1px solid #c0c0c0;
 
   display: flex;
   align-items: center;
 
   &:last-child {
-    border-bottom: 1px solid #C0C0C0;
+    border-bottom: 1px solid #c0c0c0;
   }
 `
 
@@ -68,29 +68,29 @@ export const MemberListItemCircle = styled.div`
   min-width: 50px;
   height: 50px;
   margin-right: 20px;
-  border: 1px solid #01308B;
+  border: 1px solid #01308b;
   border-radius: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: #003BAE;
+  background-color: #003bae;
   font-size: 18px;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
 `
 
 export const MemberListItemInfo = styled.div`
   word-break: break-word;
   display: flex;
   flex: 1;
-  
+
   strong {
     margin-right: 10px;
   }
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     flex-direction: column;
   }
 `

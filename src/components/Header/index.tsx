@@ -1,8 +1,9 @@
+import { useLocation } from 'react-router-dom'
+
 import { Logo } from '../Logo'
 import { UserIndicator } from './UserIndicator'
 
 import { Container, Content, Nav, NavItem } from './styles'
-import { useLocation } from 'react-router-dom'
 
 export function Header() {
   const location = useLocation()
@@ -14,13 +15,13 @@ export function Header() {
 
         <Nav>
           <NavItem
-            to='/dashboard/exams'
+            to="/dashboard/exams"
             selected={location.pathname === '/dashboard/exams'}
           >
             Exams
           </NavItem>
           <NavItem
-            to='/dashboard/classes'
+            to="/dashboard/classes"
             selected={location.pathname === '/dashboard/classes'}
           >
             Classes

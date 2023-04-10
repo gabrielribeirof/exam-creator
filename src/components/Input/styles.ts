@@ -13,15 +13,16 @@ export const Container = styled.div`
   input {
     height: 50px;
     padding: 0 12px;
-    border: 1px solid #C0C0C0;
+    border: 1px solid #c0c0c0;
     border-radius: 6px;
 
-    background-color: #E7E7E7;
+    background-color: #e7e7e7;
     font-family: 'Inter';
     outline: none;
     transition: border-color 200ms;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border-color: #888888;
     }
   }

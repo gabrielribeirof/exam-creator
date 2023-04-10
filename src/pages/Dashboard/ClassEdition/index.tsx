@@ -37,11 +37,11 @@ interface MemberFormData {
 export function ClassEdition() {
   const [members, setMembers] = useState<Member[]>([])
 
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
+  const handleSubmit: SubmitHandler<FormData> = data => {
     console.log(data)
   }
 
-  const handleMemberSubmit: SubmitHandler<MemberFormData> = (data) => {
+  const handleMemberSubmit: SubmitHandler<MemberFormData> = data => {
     console.log(data)
   }
 
@@ -61,42 +61,40 @@ export function ClassEdition() {
       <Content>
         <Form onSubmit={handleSubmit}>
           <StepControlBar
-            title='Settings'
-            description='* Mandatory fields'
-            buttons={<>
-              <Button
-                type='button'
-                color='red'
-                icon={Trash}
-                variant='outlined'
-              >
-                Delete class
-              </Button>
+            title="Settings"
+            description="* Mandatory fields"
+            buttons={
+              <>
+                <Button
+                  type="button"
+                  color="red"
+                  icon={Trash}
+                  variant="outlined"
+                >
+                  Delete class
+                </Button>
 
-              <Button
-                type='submit'
-                color='blue'
-                icon={FloppyDiskBack}
-              >
-                Save
-              </Button>
-            </>}
+                <Button type="submit" color="blue" icon={FloppyDiskBack}>
+                  Save
+                </Button>
+              </>
+            }
           />
 
-          <Input name='title' label='Class Title' mandatory />
+          <Input name="title" label="Class Title" mandatory />
         </Form>
 
         <Form onSubmit={handleMemberSubmit}>
           <WithButtonInputContainer>
             <Input
-              name='email'
-              label='Add people by their e-mail'
-              type='email'
+              name="email"
+              label="Add people by their e-mail"
+              type="email"
               mandatory
             />
 
-            <InputButton type='submit'>
-              <Plus size={18} weight='bold' />
+            <InputButton type="submit">
+              <Plus size={18} weight="bold" />
             </InputButton>
           </WithButtonInputContainer>
         </Form>
@@ -109,19 +107,18 @@ export function ClassEdition() {
               </MemberListItemCircle>
 
               <MemberListItemInfo>
-                <strong>{member.name}</strong>
-                ({member.email})
+                <strong>{member.name}</strong>({member.email})
               </MemberListItemInfo>
 
               <MemberListItemActions>
                 <Trash
-                  weight='fill'
-                  color='#DE4534'
-                  cursor='pointer'
+                  weight="fill"
+                  color="#DE4534"
+                  cursor="pointer"
                   onClick={() => handleMemberDelete(member.id)}
                 />
               </MemberListItemActions>
-          </MemberListItem>
+            </MemberListItem>
           ))}
         </MemberList>
       </Content>

@@ -9,7 +9,7 @@ const HEADER_CONTENT_HORIZONTAL_SIDE_PADDING_IN_PX = 20
 
 export const Container = styled.header`
   height: ${HEADER_HEIGHT_IN_PX}px;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   display: flex;
 `
 
@@ -26,11 +26,13 @@ export const Content = styled.div`
     margin-right: 20px;
   }
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     justify-content: space-between;
   }
 
-  @media(max-width: ${USER_INDICATOR_WIDTH_IN_PX + LOGO_WIDTH_IN_PX + HEADER_CONTENT_HORIZONTAL_SIDE_PADDING_IN_PX * 2}px) {
+  @media (max-width: ${USER_INDICATOR_WIDTH_IN_PX +
+    LOGO_WIDTH_IN_PX +
+    HEADER_CONTENT_HORIZONTAL_SIDE_PADDING_IN_PX * 2}px) {
     justify-content: flex-end;
 
     & > div:first-of-type {
@@ -43,7 +45,7 @@ export const Nav = styled.nav`
   display: flex;
   flex: 1;
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     display: none;
   }
 `
@@ -67,7 +69,8 @@ export const NavItem = styled(Link)<NavItemProps>`
   color: #202020;
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     &:after {
       opacity: 1;
     }
@@ -76,15 +79,17 @@ export const NavItem = styled(Link)<NavItemProps>`
   &:after {
     content: '';
     position: absolute;
-    border-top: 6px solid #003BAE;
+    border-top: 6px solid #003bae;
     left: 0;
     right: 0;
     bottom: 0;
     opacity: 0;
     transition: opacity 200ms;
 
-    ${(props) => props.selected && css`
-      opacity: 1;
-    `}
+    ${props =>
+      props.selected &&
+      css`
+        opacity: 1;
+      `}
   }
 `

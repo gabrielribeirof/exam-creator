@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
   margin-bottom: 20px;
-  
+
   > *:not(:last-child) {
     margin-bottom: 14px;
   }

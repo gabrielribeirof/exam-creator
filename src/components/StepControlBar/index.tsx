@@ -7,7 +7,11 @@ interface ContentBarProps {
   buttons: ReactNode
 }
 
-export function StepControlBar({ title, description, buttons }: ContentBarProps) {
+export function StepControlBar({
+  title,
+  description,
+  buttons
+}: ContentBarProps) {
   return (
     <Container>
       <Title>
@@ -15,9 +19,7 @@ export function StepControlBar({ title, description, buttons }: ContentBarProps)
         <span>{description}</span>
       </Title>
 
-      <ButtonsContainer>
-        {buttons}
-      </ButtonsContainer>
+      <ButtonsContainer>{buttons}</ButtonsContainer>
     </Container>
   )
 }

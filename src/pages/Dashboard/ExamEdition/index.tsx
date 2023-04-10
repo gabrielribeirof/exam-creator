@@ -47,9 +47,13 @@ export function ExamEdition() {
       }}
       content={{ smallerWidth: true }}
     >
-      {step === 'settings' && <SettingStep onSubmitted={() => setStep('questions')} />}
+      {step === 'settings' && (
+        <SettingStep onSubmitted={() => setStep('questions')} />
+      )}
 
-      {step === 'questions' && <QuestionsStep onSubmitted={() => navigate('/dashboard/exams')} />}
+      {step === 'questions' && (
+        <QuestionsStep onSubmitted={() => navigate('/dashboard/exams')} />
+      )}
     </DashboardBase>
   )
 }

@@ -1,5 +1,10 @@
 import { type ReactNode } from 'react'
-import { createBrowserRouter, type RouteObject, RouterProvider, Navigate } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  type RouteObject,
+  RouterProvider,
+  Navigate
+} from 'react-router-dom'
 
 import { useAuthentication } from '../hooks/useAuthentication'
 
@@ -20,7 +25,11 @@ const routes: RouteObject[] = [
   },
   {
     path: '/dashboard',
-    element: <AuthRoute><Dashboard /></AuthRoute>,
+    element: (
+      <AuthRoute>
+        <Dashboard />
+      </AuthRoute>
+    ),
     children: [
       {
         path: 'exams',
