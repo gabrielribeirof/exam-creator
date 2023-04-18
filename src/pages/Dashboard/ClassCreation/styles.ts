@@ -1,11 +1,5 @@
 import styled from 'styled-components'
 
-export const Content = styled.div`
-  > *:not(:last-child) {
-    margin-bottom: 10px;
-  }
-`
-
 export const WithButtonInputContainer = styled.div`
   display: flex;
   align-items: flex-end;

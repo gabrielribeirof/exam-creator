@@ -4,17 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-
-    .mandatory-indicator {
-      margin-left: 5px;
-      color: #d33131;
-    }
-  }
-
   textarea {
+    min-height: 120px;
     height: 50px;
     padding: 14px 12px;
     border: 1px solid #c0c0c0;

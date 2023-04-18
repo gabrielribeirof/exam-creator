@@ -1,16 +1,7 @@
 import styled from 'styled-components'
 import { Root, Indicator } from '@radix-ui/react-checkbox'
 
-export const CheckboxGroupContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  > div:not(:last-child) {
-    margin-bottom: 10px;
-  }
-`
-
-export const Checkbox = styled.div`
+export const Container = styled.div`
   display: flex;
   align-items: center;
 

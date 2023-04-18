@@ -1,22 +1,65 @@
+import { useRef, useState } from 'react'
 import { Plus, Trash, UsersFour } from 'phosphor-react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import {
+  type ClassFormSchema,
+  classFormSchema
+} from '../../../lib/schemas/classFormSchema'
 
 import { DashboardBase } from '../../../components/DashboardBase'
+import { StepControlBar } from '../../../components/StepControlBar'
+import { FormContent } from '../../../components/Form'
+
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 
 import {
-  Content,
   WithButtonInputContainer,
   InputButton,
   MemberList,
   MemberListItem,
-  MemberListItemActions,
   MemberListItemCircle,
-  MemberListItemInfo
+  MemberListItemInfo,
+  MemberListItemActions
 } from './styles'
-import { StepControlBar } from '../../../components/StepControlBar'
 
 export function ClassCreation() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<ClassFormSchema>({
+    resolver: zodResolver(classFormSchema)
+  })
+
+  const emailInputRef = useRef<HTMLInputElement>(null)
+
+  const [loading] = useState(false)
+  const [members, setMembers] = useState<
+    Array<{ id: string; name: string; email: string }>
+  >([])
+
+  function handleMemberAdd(email: string) {
+    if (!email) return
+
+    setMembers([
+      ...members,
+      { id: (Math.random() * 1000000).toString(), name: 'Gabriel', email }
+    ])
+
+    if (emailInputRef.current) {
+      emailInputRef.current.value = ''
+    }
+  }
+
+  function handleMemberRemove(email: string) {
+    if (!email) return
+
+    setMembers(members.filter(member => member.email !== email))
+  }
+
   return (
     <DashboardBase
       header={{
@@ -26,47 +69,66 @@ export function ClassCreation() {
       }}
       content={{ smallerWidth: true }}
     >
-      <Content>
+      <form onSubmit={handleSubmit(data => console.log(data))}>
         <StepControlBar
           title="Settings"
           description="* Mandatory fields"
           buttons={
-            <Button type="submit" color="blue">
+            <Button type="submit" color="blue" isLoading={loading}>
               Create
             </Button>
           }
         />
 
-        <Input name="title" label="Class Title" mandatory />
-
-        <WithButtonInputContainer>
+        <FormContent>
           <Input
-            name="email"
-            label="Add people by their e-mail"
-            type="email"
+            label="Class Title"
+            error={errors.title?.message}
             mandatory
+            {...register('title')}
           />
 
-          <InputButton>
-            <Plus size={18} weight="bold" />
-          </InputButton>
-        </WithButtonInputContainer>
+          <WithButtonInputContainer>
+            <Input
+              ref={emailInputRef}
+              name="email"
+              label="Add people by their e-mail"
+              type="email"
+              error={errors.users?.message}
+              mandatory
+            />
 
-        <MemberList>
-          <MemberListItem>
-            <MemberListItemCircle>G</MemberListItemCircle>
+            <InputButton
+              type="button"
+              onClick={() =>
+                handleMemberAdd(emailInputRef.current?.value ?? '')
+              }
+            >
+              <Plus size={18} weight="bold" />
+            </InputButton>
+          </WithButtonInputContainer>
 
-            <MemberListItemInfo>
-              <strong>Gabriel Ribeiro</strong>
-              (ogabrielribeirof@gmail.com)
-            </MemberListItemInfo>
+          <MemberList>
+            {members.map(member => (
+              <MemberListItem key={member.id}>
+                <MemberListItemCircle>
+                  {member.name[0].toUpperCase()}
+                </MemberListItemCircle>
 
-            <MemberListItemActions>
-              <Trash weight="fill" color="#DE4534" cursor="pointer" />
-            </MemberListItemActions>
-          </MemberListItem>
-        </MemberList>
-      </Content>
+                <MemberListItemInfo>
+                  <strong>{member.name}</strong>({member.email})
+                </MemberListItemInfo>
+
+                <MemberListItemActions
+                  onClick={() => handleMemberRemove(member.email)}
+                >
+                  <Trash weight="fill" color="#DE4534" cursor="pointer" />
+                </MemberListItemActions>
+              </MemberListItem>
+            ))}
+          </MemberList>
+        </FormContent>
+      </form>
     </DashboardBase>
   )
 }

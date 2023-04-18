@@ -11,10 +11,10 @@ import { useAuthentication } from '../hooks/useAuthentication'
 import { SignIn } from '../pages/SignIn'
 
 import { Dashboard } from '../pages/Dashboard'
-import { Exams } from '../pages/Dashboard/Exams'
+import { Exams } from '../pages/Dashboard/ExamsList'
 import { ExamCreation } from '../pages/Dashboard/ExamCreation'
 import { ExamEdition } from '../pages/Dashboard/ExamEdition'
-import { Classes } from '../pages/Dashboard/Classes'
+import { ClassesList } from '../pages/Dashboard/ClassesList'
 import { ClassCreation } from '../pages/Dashboard/ClassCreation'
 import { ClassEdition } from '../pages/Dashboard/ClassEdition'
 
@@ -45,7 +45,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'classes',
-        element: <Classes />
+        element: <ClassesList />
       },
       {
         path: 'classes/creation',

@@ -1,44 +1,35 @@
-import { useEffect, useRef, type TextareaHTMLAttributes } from 'react'
-import { useField } from '@unform/core'
+import React, { type TextareaHTMLAttributes } from 'react'
+import { type Icon } from 'phosphor-react'
 
 import { Container } from './styles'
+import { Label } from '../Label'
 
 type TextareaProps = TextareaHTMLAttributes<HTMLElement> & {
   name: string
   label: string
+  labelIcon?: Icon
   mandatory?: boolean
+  error?: string
 }
 
-export function Textarea({ name, label, mandatory, ...props }: TextareaProps) {
-  const textareaRef = useRef<HTMLTextAreaElement>(null)
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  function Textarea(
+    { name, label, labelIcon, mandatory, error, ...props }: TextareaProps,
+    forwardedRef
+  ) {
+    return (
+      <Container>
+        {label && (
+          <Label
+            text={label}
+            icon={labelIcon}
+            error={error}
+            mandatory={mandatory}
+          />
+        )}
 
-  const { fieldName, registerField, defaultValue, error } = useField(name)
-
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: textareaRef.current,
-      path: 'value'
-    })
-  }, [fieldName, textareaRef])
-
-  return (
-    <Container>
-      <label htmlFor={name}>
-        {label}
-
-        {mandatory && <span className="mandatory-indicator">*</span>}
-
-        {error && `- ${error}`}
-      </label>
-
-      <textarea
-        ref={textareaRef}
-        id={name}
-        name={name}
-        defaultValue={defaultValue}
-        {...props}
-      />
-    </Container>
-  )
-}
+        <textarea id={name} name={name} ref={forwardedRef} {...props} />
+      </Container>
+    )
+  }
+)

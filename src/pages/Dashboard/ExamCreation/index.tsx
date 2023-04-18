@@ -1,22 +1,13 @@
 import { useState } from 'react'
 import { Exam } from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 
 import { DashboardBase } from '../../../components/DashboardBase'
 
 import { SettingStep } from './SettingStep'
 import { QuestionsStep } from './QuestionsStep'
-import { useNavigate } from 'react-router-dom'
 
 type STEPS = 'questions' | 'settings'
-
-export interface ExamSettings {
-  title: string
-  guidelines: string
-  classes: string[]
-  date: string
-  start_time: string
-  end_time: string
-}
 
 export function ExamCreation() {
   const navigate = useNavigate()

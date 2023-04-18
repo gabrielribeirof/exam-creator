@@ -1,5 +1,4 @@
-# Libs & Dists
+# NodeJS and Builds
 node_modules
-*.d.ts
 dist
 .next

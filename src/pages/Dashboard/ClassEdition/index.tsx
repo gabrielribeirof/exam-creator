@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import { FloppyDiskBack, Plus, Trash, UsersFour } from 'phosphor-react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { type SubmitHandler } from '@unform/core'
-import { Form } from '@unform/web'
+import {
+  classFormSchema,
+  type ClassFormSchema
+} from '../../../lib/schemas/classFormSchema'
+
+import { FormContent } from '../../../components/Form'
 
 import { DashboardBase } from '../../../components/DashboardBase'
 import { StepControlBar } from '../../../components/StepControlBar'
@@ -10,7 +16,6 @@ import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 
 import {
-  Content,
   InputButton,
   MemberList,
   MemberListItem,
@@ -20,34 +25,16 @@ import {
   WithButtonInputContainer
 } from '../ClassCreation/styles'
 
-interface Member {
-  id: string
-  name: string
-  email: string
-}
-
-interface FormData {
-  title: string
-}
-
-interface MemberFormData {
-  email: string
-}
-
 export function ClassEdition() {
-  const [members, setMembers] = useState<Member[]>([])
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<ClassFormSchema>({
+    resolver: zodResolver(classFormSchema)
+  })
 
-  const handleSubmit: SubmitHandler<FormData> = data => {
-    console.log(data)
-  }
-
-  const handleMemberSubmit: SubmitHandler<MemberFormData> = data => {
-    console.log(data)
-  }
-
-  function handleMemberDelete(id: string) {
-    console.log(id)
-  }
+  const [loading] = useState(false)
 
   return (
     <DashboardBase
@@ -58,70 +45,66 @@ export function ClassEdition() {
       }}
       content={{ smallerWidth: true }}
     >
-      <Content>
-        <Form onSubmit={handleSubmit}>
-          <StepControlBar
-            title="Settings"
-            description="* Mandatory fields"
-            buttons={
-              <>
-                <Button
-                  type="button"
-                  color="red"
-                  icon={Trash}
-                  variant="outlined"
-                >
-                  Delete class
-                </Button>
+      <form onSubmit={handleSubmit(data => console.log(data))}>
+        <StepControlBar
+          title="Settings"
+          description="* Mandatory fields"
+          buttons={
+            <>
+              <Button type="submit" color="red" variant="outlined">
+                Delete class
+              </Button>
 
-                <Button type="submit" color="blue" icon={FloppyDiskBack}>
-                  Save
-                </Button>
-              </>
-            }
+              <Button
+                icon={FloppyDiskBack}
+                type="submit"
+                color="blue"
+                isLoading={loading}
+              >
+                Save
+              </Button>
+            </>
+          }
+        />
+
+        <FormContent>
+          <Input
+            label="Class Title"
+            error={errors.title?.message}
+            mandatory
+            {...register('title')}
           />
 
-          <Input name="title" label="Class Title" mandatory />
-        </Form>
-
-        <Form onSubmit={handleMemberSubmit}>
           <WithButtonInputContainer>
             <Input
               name="email"
               label="Add people by their e-mail"
               type="email"
+              error={errors.users?.message}
               mandatory
             />
 
-            <InputButton type="submit">
+            <InputButton type="button">
               <Plus size={18} weight="bold" />
             </InputButton>
           </WithButtonInputContainer>
-        </Form>
 
-        <MemberList>
-          {members.map(member => (
-            <MemberListItem key={member.id}>
-              <MemberListItemCircle>
-                {member.name.charAt(0).toUpperCase()}
-              </MemberListItemCircle>
+          <MemberList>
+            <MemberListItem>
+              <MemberListItemCircle>G</MemberListItemCircle>
 
               <MemberListItemInfo>
-                <strong>{member.name}</strong>({member.email})
+                <strong>Gabriel Ribeiro</strong>
+                (ogabrielribeirof@gmail.com)
               </MemberListItemInfo>
 
               <MemberListItemActions>
-                <Trash
-                  weight="fill"
-                  color="#DE4534"
-                  cursor="pointer"
-                  onClick={() => handleMemberDelete(member.id)}
-                />
+                <Trash weight="fill" color="#DE4534" cursor="pointer" />
               </MemberListItemActions>
             </MemberListItem>
-          ))}
-        </MemberList>
-      </Content>
+          </MemberList>
+        </FormContent>
+      </form>
     </DashboardBase>
   )
 }

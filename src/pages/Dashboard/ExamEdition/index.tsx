@@ -9,15 +9,6 @@ import { QuestionsStep } from './QuestionsStep'
 
 type STEPS = 'questions' | 'settings'
 
-export interface ExamSettings {
-  title: string
-  guidelines: string
-  classes: string[]
-  date: string
-  start_time: string
-  end_time: string
-}
-
 export function ExamEdition() {
   const navigate = useNavigate()
   const { id } = useParams()

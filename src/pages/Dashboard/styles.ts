@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Grid = styled.div`
+export const CardGrid = styled.div`
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

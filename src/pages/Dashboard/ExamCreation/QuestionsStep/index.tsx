@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Plus } from 'phosphor-react'
 import produce from 'immer'
 
+import { FormContent } from '../../../../components/Form'
+
 import { QuestionCard } from '../../../../components/QuestionCard'
 import { ListContext } from '../../../../contexts/ListContext'
 import { StepControlBar } from '../../../../components/StepControlBar'
 
-import { Content } from '../styles'
 import { Button } from '../../../../components/Button'
 import { QuestionModal } from '../../../../components/QuestionModal'
 
@@ -79,7 +80,7 @@ export function QuestionsStep({ onSubmitted }: QuestionsStepProps) {
         }
       />
 
-      <Content>
+      <FormContent>
         <ListContext.Provider value={{ items: questions, move }}>
           {questions.map((question, index) => (
             <QuestionCard
@@ -98,7 +99,7 @@ export function QuestionsStep({ onSubmitted }: QuestionsStepProps) {
           open={isQuestionEditModalOpen}
           onOpenChange={setIsQuestionEditModalOpen}
         />
-      </Content>
+      </FormContent>
     </div>
   )
 }

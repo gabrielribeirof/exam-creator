@@ -7,13 +7,13 @@ import {
   UsersFour,
   Watch
 } from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 
 import { DashboardBase } from '../../../components/DashboardBase'
 
 import { Button } from '../../../components/Button'
 import { Card } from '../../../components/Card'
-import { Grid } from '../styles'
-import { useNavigate } from 'react-router-dom'
+import { CardGrid } from '../styles'
 
 export function Exams() {
   const navigate = useNavigate()
@@ -34,7 +34,7 @@ export function Exams() {
         )
       }}
     >
-      <Grid>
+      <CardGrid>
         <Card
           title="Natural Sciences and Mathematics"
           backgroundColor="#202020"
@@ -125,7 +125,7 @@ export function Exams() {
             }
           }}
         />
-      </Grid>
+      </CardGrid>
     </DashboardBase>
   )
 }

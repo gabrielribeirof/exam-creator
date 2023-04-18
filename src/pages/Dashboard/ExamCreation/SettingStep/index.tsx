@@ -1,40 +1,44 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { ArrowRight, Calendar, Watch } from 'phosphor-react'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { Form } from '@unform/web'
-import { type FormHandles, type SubmitHandler } from '@unform/core'
+import {
+  type ExamSettingFormData,
+  examSettingFormSchema
+} from '../../../../lib/schemas/examSettingFormSchema'
 
-import { Content } from '../styles'
 import { SchedulingGroup } from './styles'
 
+import { StepControlBar } from '../../../../components/StepControlBar'
+import { FormContent } from '../../../../components/Form'
+
+import { Label } from '../../../../components/Label'
 import { Input } from '../../../../components/Input'
 import { Button } from '../../../../components/Button'
 import { Textarea } from '../../../../components/Textarea'
-import { CheckboxGroup } from '../../../../components/CheckboxGroup'
-import { StepControlBar } from '../../../../components/StepControlBar'
-import { Label } from '../../../../components/Label'
+import { Checkbox } from '../../../../components/Checkbox'
+import { CheckboxGroupContainer } from '../../../../components/CheckboxGroup/styles'
 
 interface SettingStepProps {
   onSubmitted: () => void
 }
 
-interface FormData {
-  title: string
-  guidelines: string
-  classes: string[]
-  date: string
-  opening_time: string
-  closing_time: string
-}
-
 const delay = async () => await new Promise(resolve => setTimeout(resolve, 300))
 
 export function SettingStep({ onSubmitted }: SettingStepProps) {
-  const formRef = useRef<FormHandles>(null)
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors }
+  } = useForm<ExamSettingFormData>({
+    resolver: zodResolver(examSettingFormSchema)
+  })
 
   const [loading, setLoading] = useState(false)
 
-  async function handleSubmit(data: SubmitHandler<FormData>) {
+  async function onSubmit(data: ExamSettingFormData) {
     console.log(data)
     setLoading(true)
 
@@ -44,24 +48,7 @@ export function SettingStep({ onSubmitted }: SettingStepProps) {
   }
 
   return (
-    <Form
-      onSubmit={handleSubmit}
-      ref={formRef}
-      initialData={{
-        classes: [
-          {
-            id: 'C1',
-            label: 'Analytic Geometry',
-            checked: false
-          },
-          {
-            id: 'C2',
-            label: 'Analytic Geometry',
-            checked: false
-          }
-        ]
-      }}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <StepControlBar
         title="Settings"
         description="* Mandatory fields"
@@ -77,32 +64,88 @@ export function SettingStep({ onSubmitted }: SettingStepProps) {
         }
       />
 
-      <Content>
-        <Input name="title" label="Setting Title" mandatory />
+      <FormContent>
+        <Input
+          label="Setting Title"
+          error={errors.title?.message}
+          mandatory
+          {...register('title')}
+        />
 
-        <Textarea name="guidelines" label="Guidelines" mandatory />
+        <Textarea
+          label="Guidelines"
+          error={errors.guidelines?.message}
+          mandatory
+          {...register('guidelines')}
+        />
 
-        <CheckboxGroup name="classes" />
+        <CheckboxGroupContainer>
+          <Label
+            text="Which classes will take the exam?"
+            error={errors.classes?.message?.message}
+            mandatory
+          />
+
+          {[
+            {
+              id: 'C1',
+              label: 'Analytic Geometry',
+              checked: false
+            },
+            {
+              id: 'C2',
+              label: 'Analytic Geometry',
+              checked: false
+            }
+          ].map(checkbox => (
+            <Controller
+              key={checkbox.id}
+              name={`classes.${checkbox.id}`}
+              control={control}
+              defaultValue={checkbox.checked}
+              render={({ field: { onChange } }) => (
+                <Checkbox
+                  id={checkbox.id}
+                  label={checkbox.label}
+                  checked={checkbox.checked}
+                  onCheckedChange={checked => onChange(checked === true)}
+                />
+              )}
+            />
+          ))}
+        </CheckboxGroupContainer>
 
         <SchedulingGroup>
-          <Label text="Scheduling" mandatory />
+          <Label text="Scheduling" />
 
-          <Input label="Date" labelIcon={Calendar} type="date" name="date" />
+          <Input
+            label="Date"
+            labelIcon={Calendar}
+            type="date"
+            error={errors.date?.message}
+            mandatory
+            {...register('date')}
+          />
 
           <Input
             label="Opening Time"
             labelIcon={Watch}
             type="time"
-            name="opening_time"
+            error={errors.opening_time?.message}
+            mandatory
+            {...register('opening_time')}
           />
+
           <Input
             label="Closing Time"
             labelIcon={Watch}
             type="time"
-            name="closing_time"
+            error={errors.closing_time?.message}
+            mandatory
+            {...register('closing_time')}
           />
         </SchedulingGroup>
-      </Content>
-    </Form>
+      </FormContent>
+    </form>
   )
 }

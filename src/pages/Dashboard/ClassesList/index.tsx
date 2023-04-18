@@ -4,9 +4,10 @@ import { ArrowRight, ListChecks, Plus, UsersFour } from 'phosphor-react'
 import { DashboardBase } from '../../../components/DashboardBase'
 import { Button } from '../../../components/Button'
 import { Card } from '../../../components/Card'
-import { Grid } from '../styles'
 
-export function Classes() {
+import { CardGrid } from '../styles'
+
+export function ClassesList() {
   const navigate = useNavigate()
 
   return (
@@ -15,13 +16,17 @@ export function Classes() {
         icon: UsersFour,
         title: 'Classes',
         buttons: (
-          <Button color="blue" icon={Plus}>
+          <Button
+            color="blue"
+            icon={Plus}
+            onClick={() => navigate('/dashboard/classes/creation')}
+          >
             Create class
           </Button>
         )
       }}
     >
-      <Grid>
+      <CardGrid>
         <Card
           title="Natural Sciences and Mathematics"
           items={[
@@ -82,7 +87,7 @@ export function Classes() {
             }
           }}
         />
-      </Grid>
+      </CardGrid>
     </DashboardBase>
   )
 }

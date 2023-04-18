@@ -12,7 +12,7 @@ export const Trigger = styled(DropdownMenuTrigger)`
   max-width: ${USER_INDICATOR_WIDTH_IN_PX}px;
   padding: 6px 14px;
   border: none;
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px;
 
   display: flex;
   align-items: center;
@@ -21,8 +21,14 @@ export const Trigger = styled(DropdownMenuTrigger)`
   background-color: transparent;
   outline: none;
   cursor: pointer;
+  transition: background-color 200ms, box-shadow 200ms;
 
   &[data-state='open'] {
+    border-radius: 16px 16px 0 0;
+  }
+
+  &[data-state='open'],
+  &:hover {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   }
